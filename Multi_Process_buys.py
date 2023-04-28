@@ -45,7 +45,7 @@ class buy_ticket(Process):
 		sleep(3) # 确保页面跳转
 
 	# 定义点击按钮的函数
-	def click_button(self):
+	def click_button(self, pay_now_button):
     	        pay_now_button.click()
     	        print(f"Process [{self.process_id}] :Clicked the button! \n")
 
@@ -60,16 +60,16 @@ class buy_ticket(Process):
 
 		# 定期点击按钮
 		while True:
-    			click_button()
-    		try:
-        		# 等待页面跳转
-        		WebDriverWait(driver, 0.5).until(staleness_of(pay_now_button))
-        		print(f"Process [{self.process_id}]: Page has refreshed, stopping the script. \n")
-        		sys.exit(0)
-        		break
-    		except:
-        		# 页面未跳转
-        		pass
+    			click_button(pay_now_button)
+    			try:
+        			# 等待页面跳转
+        			WebDriverWait(driver, 0.5).until(staleness_of(pay_now_button))
+        			print(f"Process [{self.process_id}]: Page has refreshed, stopping the script. \n")
+        			sys.exit(0)
+        			break
+    			except:
+        			# 页面未跳转
+        			pass
 	def run(self):
 		start_driver()
 		button()
