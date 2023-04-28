@@ -77,8 +77,7 @@ class buy_ticket(Process):
 def start_buy_ticket(process_id, web_name, userid, userpwd, chromedriver_path):
 
     worker = buy_ticket(process_id, web_name, userid, userpwd, chromedriver_path)
-    worker.start_driver()
-    worker.
+    worker.run()
     return worker
 
 
