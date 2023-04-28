@@ -89,7 +89,7 @@ def listening_process(process_id, buy_ticket_pool, event):
 
 		(exited_process, web_name, userid, userpwd, chromedriver_path) = buy_ticket_pool.get(exited = True)
 
-		new_process = start_buy_ticket(exited_process, web_name, userid, userpwd, chromedriver_path)
+		new_process = start_buy_ticket(process_id = exited_process, web_name, userid, userpwd, chromedriver_path)
 
 		buy_ticket_pool.replace(exited_process, new_process)
 
@@ -108,7 +108,7 @@ if __name__ == "__main__":
 
     buy_ticket_pool = multiprocessing.Pool(processes = processes_num)
     for i in range(len(url)):
-        buy_ticket_pool.apply_async(start_buy_ticket, args=(f"Process {i}", url[i], userid, userpwd, chromedriver_path))
+        buy_ticket_pool.apply_async(start_buy_ticket, args=(process_id = f"Process {i}", url[i], userid, userpwd, chromedriver_path))
 
     # Set up the monitoring pool with processes
     monitoring_pool = multiprocessing.Pool(processes = processes_num)
