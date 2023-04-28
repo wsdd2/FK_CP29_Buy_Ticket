@@ -46,8 +46,8 @@ class buy_ticket(Process):
 
 	# 定义点击按钮的函数
 	def click_button(self):
-    	pay_now_button.click()
-    	print(f"Process [{self.process_id}] :Clicked the button! \n")
+    	        pay_now_button.click()
+    	        print(f"Process [{self.process_id}] :Clicked the button! \n")
 
 	def click_button(self):
 		driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[3]/div[1]").click()
