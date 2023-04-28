@@ -111,10 +111,10 @@ if __name__ == "__main__":
         buy_ticket_pool.apply_async(start_buy_ticket, args=(f"Process {i}", url[i], userid, userpwd, chromedriver_path))
 
     # Set up the monitoring pool with processes
-    monitoring_pool = multiprocessing.Pool(processes = processes_num)
+    buy_ticket_pool = multiprocessing.Pool(processes = processes_num)
     event = multiprocessing.Event()
     for i in range(processes_num):
-        monitoring_pool.apply_async(listening_process, args=(f"Monitor {i}", buy_ticket_pool, event))
+        buy_ticket_pool.apply_async(listening_process, args=(f"Monitor {i}", buy_ticket_pool, event))
 
     # Wait for the Selenium workers to finish
     buy_ticket_pool.close()
