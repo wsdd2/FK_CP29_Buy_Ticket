@@ -92,7 +92,7 @@ def listening_process(process_id, buy_ticket_pool, event):
 
 		event.clear()
 
-	print(f"Monitoring process {process_id} exiting...")
+	print(f"Monitoring process {exited_process} exiting...")
 
 
 if __name__ == "__main__":
