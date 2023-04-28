@@ -49,7 +49,7 @@ class buy_ticket(Process):
     	        pay_now_button.click()
     	        print(f"Process [{self.process_id}] :Clicked the button! \n")
 
-	def click_button(self):
+	def button(self):
 		driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[3]/div[1]").click()
 		# 选择 支付宝
 		driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div[4]/div[1]").click()
@@ -60,7 +60,7 @@ class buy_ticket(Process):
 
 		# 定期点击按钮
 		while True:
-    		click_button()
+    			click_button()
     		try:
         		# 等待页面跳转
         		WebDriverWait(driver, 0.5).until(staleness_of(pay_now_button))
@@ -70,11 +70,15 @@ class buy_ticket(Process):
     		except:
         		# 页面未跳转
         		pass
+	def run(self):
+		start_driver()
+		button()
 
 def start_buy_ticket(process_id, web_name, userid, userpwd, chromedriver_path):
 
     worker = buy_ticket(process_id, web_name, userid, userpwd, chromedriver_path)
-    worker.start()
+    worker.start_driver()
+    worker.
     return worker
 
 
